@@ -1,0 +1,3 @@
+shutdown.exe 
+exit
+shutdown.exe -r -t 0
