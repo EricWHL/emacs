@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;       System config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setenv "HOME" "G:/soft/emacs")
-(setenv "PATH" "G:/soft/emacs")
+(setenv "HOME" "D:/emacs")
+(setenv "PATH" "D:/emacs")
 
 (require 'cc-mode)
 
@@ -141,9 +141,9 @@
 (set-face-foreground 'secondary-selection "skyblue")
 (set-face-background 'secondary-selection "darkblue")
 
-(add-to-list 'load-path "G:/soft/emacs/.emacs.d/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (require 'color-theme)
-(add-to-list 'load-path "G:/soft/emacs/.emacs.d/theme")
+(add-to-list 'load-path "D:/emacs/.emacs.d/theme")
 (require 'color-theme-tangotango)
 (color-theme-tangotango)
 
@@ -184,14 +184,14 @@
 ;;       git tools                        ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;git-emacs
-(add-to-list 'load-path "G:/soft/emacs/.emacs.d/git-emacs/")
+(add-to-list 'load-path "~/.emacs.d/git-emacs/")
 (require 'git-emacs)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;       config cygwin tools              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "G:/soft/emacs/.emacs.d/cygwin-config/")
+(add-to-list 'load-path "~/.emacs.d/cygwin-config/")
 ;(require 'cygwin-mount)
 ;(cygwin-mount-activate)
 
@@ -209,8 +209,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; golden-ratio config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'golden-ratio)
-(golden-ratio-mode 1)
+;;(require 'golden-ratio)
+;;(golden-ratio-mode 1)
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
+
+(defun windmove-up-cycle()
+  (interactive)
+  (condition-case nil (windmove-up)
+    (error (condition-case nil (windmove-down)
+         (error (condition-case nil (windmove-right) (error (condition-case nil (windmove-left) (error (windmove-up))))))))))
+
+(defun windmove-down-cycle()
+  (interactive)
+  (condition-case nil (windmove-down)
+    (error (condition-case nil (windmove-up)
+         (error (condition-case nil (windmove-left) (error (condition-case nil (windmove-right) (error (windmove-down))))))))))
+
+(defun windmove-right-cycle()
+  (interactive)
+  (condition-case nil (windmove-right)
+    (error (condition-case nil (windmove-left)
+         (error (condition-case nil (windmove-up) (error (condition-case nil (windmove-down) (error (windmove-right))))))))))
+
+(defun windmove-left-cycle()
+  (interactive)
+  (condition-case nil (windmove-left)
+    (error (condition-case nil (windmove-right)
+         (error (condition-case nil (windmove-down) (error (condition-case nil (windmove-up) (error (windmove-left))))))))))
+
+(global-set-key (kbd "C-x <up>") 'windmove-up-cycle)
+(global-set-key (kbd "C-x <down>") 'windmove-down-cycle)
+(global-set-key (kbd "C-x <right>") 'windmove-right-cycle)
+(global-set-key (kbd "C-x <left>") 'windmove-left-cycle)
