@@ -73,11 +73,11 @@
 (set-cursor-color "gold1")
 (set-mouse-color "gold1")
 
-;;ÉèÖÃ´ò¿ªÎÄ¼şµÄÈ±Ê¡Â·¾¶
+;;è®¾ç½®æ‰“å¼€æ–‡ä»¶çš„ç¼ºçœè·¯å¾„
 (setq default-directory "D:/")
 
 (setq make-backup-files nil)
-;; Éè¶¨²»²úÉú±¸·İÎÄ¼ş
+;; è®¾å®šä¸äº§ç”Ÿå¤‡ä»½æ–‡ä»¶
 
 ;;tool-bar-mode null
 (custom-set-variables
@@ -99,30 +99,30 @@
 
 
 (setq-default make-backup-files nil)
-;; ²»Éú³ÉÁÙÊ±ÎÄ¼ş
+;; ä¸ç”Ÿæˆä¸´æ—¶æ–‡ä»¶
 
 (setq visible-bell t)
-;;¹Ø±Õ·³ÈËµÄ³ö´íÊ±µÄÌáÊ¾Éù
+;;å…³é—­çƒ¦äººçš„å‡ºé”™æ—¶çš„æç¤ºå£°
 
 (setq inhibit-startup-message t)
-;;¹Ø±ÕemacsÆô¶¯Ê±µÄ»­Ãæ
+;;å…³é—­emacså¯åŠ¨æ—¶çš„ç”»é¢
 
 (setq gnus-inhibit-startup-message t)
-;;¹Ø±ÕgnusÆô¶¯Ê±µÄ»­Ãæ
+;;å…³é—­gnuså¯åŠ¨æ—¶çš„ç”»é¢
 
 (fset 'yes-or-no-p 'y-or-n-p)
-;; ¸Ä±ä Emacs ¹ÌÖ´µÄÒªÄã»Ø´ğ yes µÄĞĞÎª¡£°´ y »ò¿Õ¸ñ¼ü±íÊ¾ yes£¬n ±íÊ¾ no¡£
+;; æ”¹å˜ Emacs å›ºæ‰§çš„è¦ä½ å›ç­” yes çš„è¡Œä¸ºã€‚æŒ‰ y æˆ–ç©ºæ ¼é”®è¡¨ç¤º yesï¼Œn è¡¨ç¤º noã€‚
 
 
 (set-scroll-bar-mode nil)
-;;È¡Ïû¹ö¶¯À¸
+;;å–æ¶ˆæ»šåŠ¨æ 
 
 (tool-bar-mode -1)
-;;È¡Ïû¹¤¾ßÀ¸
+;;å–æ¶ˆå·¥å…·æ 
 (menu-bar-mode -1)   
-;;È¥µô²Ëµ¥À¸
+;;å»æ‰èœå•æ 
 
-;;ÆÁÄ»×î´ó»¯
+;;å±å¹•æœ€å¤§åŒ–
 (defun w32-restore-frame ()
     "Restore a minimized frame"
      (interactive)
@@ -133,7 +133,7 @@
      (w32-send-sys-command 61488))
 (w32-maximize-frame)
 
-;; ÉèÖÃÁíÍâÒ»Ğ©ÑÕÉ«£ºÓï·¨¸ßÁÁÏÔÊ¾µÄ±³¾°ºÍÖ÷Ìâ£¬ÇøÓòÑ¡ÔñµÄ±³¾°ºÍÖ÷Ìâ£¬¶ş´ÎÑ¡ÔñµÄ±³¾°ºÍÑ¡Ôñ
+;; è®¾ç½®å¦å¤–ä¸€äº›é¢œè‰²ï¼šè¯­æ³•é«˜äº®æ˜¾ç¤ºçš„èƒŒæ™¯å’Œä¸»é¢˜ï¼ŒåŒºåŸŸé€‰æ‹©çš„èƒŒæ™¯å’Œä¸»é¢˜ï¼ŒäºŒæ¬¡é€‰æ‹©çš„èƒŒæ™¯å’Œé€‰æ‹©
 (set-face-foreground 'highlight "white")
 (set-face-background 'highlight "blue")
 (set-face-foreground 'region "cyan")
@@ -149,34 +149,34 @@
 
 (setq column-number-mode t)
 (setq line-number-mode t)
-;;ÏÔÊ¾ĞĞÁĞºÅ
+;;æ˜¾ç¤ºè¡Œåˆ—å·
 (global-linum-mode t)
 (setq mouse-yank-at-point t)
-;;²»ÒªÔÚÊó±êµã»÷µÄÄÇ¸öµØ·½²åÈë¼ôÌù°åÄÚÈİ¡£ÎÒ²»Ï²»¶ÄÇÑù£¬¾­³£°ÑÎÒµÄÎÄµµ¸ãµÄÒ»ÍÅÔã¡£ÎÒ¾õµÃÏÈÓÃ¹â±ê¶¨Î»£¬È»ºóÊó±êÖĞ¼üµã»÷ÒªºÃµÄ¶à¡£²»¹ÜÄãµÄ¹â±êÔÚÎÄµµµÄÄÇ¸öÎ»ÖÃ£¬»òÊÇÔÚ minibuffer£¬Êó±êÖĞ¼üÒ»µã»÷£¬X selection µÄÄÚÈİ¾Í±»²åÈëµ½ÄÇ¸öÎ»ÖÃ¡£
+;;ä¸è¦åœ¨é¼ æ ‡ç‚¹å‡»çš„é‚£ä¸ªåœ°æ–¹æ’å…¥å‰ªè´´æ¿å†…å®¹ã€‚æˆ‘ä¸å–œæ¬¢é‚£æ ·ï¼Œç»å¸¸æŠŠæˆ‘çš„æ–‡æ¡£æçš„ä¸€å›¢ç³Ÿã€‚æˆ‘è§‰å¾—å…ˆç”¨å…‰æ ‡å®šä½ï¼Œç„¶åé¼ æ ‡ä¸­é”®ç‚¹å‡»è¦å¥½çš„å¤šã€‚ä¸ç®¡ä½ çš„å…‰æ ‡åœ¨æ–‡æ¡£çš„é‚£ä¸ªä½ç½®ï¼Œæˆ–æ˜¯åœ¨ minibufferï¼Œé¼ æ ‡ä¸­é”®ä¸€ç‚¹å‡»ï¼ŒX selection çš„å†…å®¹å°±è¢«æ’å…¥åˆ°é‚£ä¸ªä½ç½®ã€‚
 
 
 (show-paren-mode t)
-;;´ò¿ªÀ¨ºÅÆ¥ÅäÏÔÊ¾Ä£Ê½
+;;æ‰“å¼€æ‹¬å·åŒ¹é…æ˜¾ç¤ºæ¨¡å¼
 
 (setq show-paren-style 'parenthesis)
-;;À¨ºÅÆ¥ÅäÊ±¿ÉÒÔ¸ßÁÁÏÔÊ¾ÁíÍâÒ»±ßµÄÀ¨ºÅ£¬µ«¹â±ê²»»á·³ÈËµÄÌøµ½ÁíÒ»¸öÀ¨ºÅ´¦¡£
+;;æ‹¬å·åŒ¹é…æ—¶å¯ä»¥é«˜äº®æ˜¾ç¤ºå¦å¤–ä¸€è¾¹çš„æ‹¬å·ï¼Œä½†å…‰æ ‡ä¸ä¼šçƒ¦äººçš„è·³åˆ°å¦ä¸€ä¸ªæ‹¬å·å¤„ã€‚
 
 (mouse-avoidance-mode 'animate)
-;;¹â±ê¿¿½üÊó±êÖ¸ÕëÊ±£¬ÈÃÊó±êÖ¸Õë×Ô¶¯ÈÃ¿ª£¬±ğµ²×¡ÊÓÏß¡£
+;;å…‰æ ‡é è¿‘é¼ æ ‡æŒ‡é’ˆæ—¶ï¼Œè®©é¼ æ ‡æŒ‡é’ˆè‡ªåŠ¨è®©å¼€ï¼Œåˆ«æŒ¡ä½è§†çº¿ã€‚
 
 (setq frame-title-format "Wanghailong@%b")
-;;ÔÚ±êÌâÀ¸ÏÔÊ¾bufferµÄÃû×Ö£¬¶ø²»ÊÇ emacs@wangyin.com ÕâÑùÃ»ÓÃµÄÌáÊ¾¡£
-;;------------´°¿Ú½çÃæÉèÖÃ½áÊø-----------------
+;;åœ¨æ ‡é¢˜æ æ˜¾ç¤ºbufferçš„åå­—ï¼Œè€Œä¸æ˜¯ emacs@wangyin.com è¿™æ ·æ²¡ç”¨çš„æç¤ºã€‚
+;;------------çª—å£ç•Œé¢è®¾ç½®ç»“æŸ-----------------
 
-;;------------ÏÔÊ¾Ê±¼äÉèÖÃ------------------------------
+;;------------æ˜¾ç¤ºæ—¶é—´è®¾ç½®------------------------------
 
-(display-time-mode 1);;ÆôÓÃÊ±¼äÏÔÊ¾ÉèÖÃ£¬ÔÚminibufferÉÏÃæµÄÄÇ¸ö¸ÜÉÏ
-(setq display-time-24hr-format t);;Ê±¼äÊ¹ÓÃ24Ğ¡Ê±ÖÆ
-(setq display-time-day-and-date t);;Ê±¼äÏÔÊ¾°üÀ¨ÈÕÆÚºÍ¾ßÌåÊ±¼ä
-(setq display-time-use-mail-icon t);;Ê±¼äÀ¸ÅÔ±ßÆôÓÃÓÊ¼şÉèÖÃ
-(setq display-time-interval 10);;Ê±¼äµÄ±ä»¯ÆµÂÊ£¬µ¥Î»¶àÉÙÀ´×Å£¿
+(display-time-mode 1);;å¯ç”¨æ—¶é—´æ˜¾ç¤ºè®¾ç½®ï¼Œåœ¨minibufferä¸Šé¢çš„é‚£ä¸ªæ ä¸Š
+(setq display-time-24hr-format t);;æ—¶é—´ä½¿ç”¨24å°æ—¶åˆ¶
+(setq display-time-day-and-date t);;æ—¶é—´æ˜¾ç¤ºåŒ…æ‹¬æ—¥æœŸå’Œå…·ä½“æ—¶é—´
+(setq display-time-use-mail-icon t);;æ—¶é—´æ æ—è¾¹å¯ç”¨é‚®ä»¶è®¾ç½®
+(setq display-time-interval 10);;æ—¶é—´çš„å˜åŒ–é¢‘ç‡ï¼Œå•ä½å¤šå°‘æ¥ç€ï¼Ÿ
 (setq display-time-format "%Y-%m-%d (%a) %H:%M")
-;;------------ÏÔÊ¾Ê±¼äÉèÖÃ½áÊø--------------
+;;------------æ˜¾ç¤ºæ—¶é—´è®¾ç½®ç»“æŸ--------------
 
 (put 'dired-find-alternate-file 'disabled nil)
 
@@ -243,3 +243,10 @@
 (global-set-key (kbd "C-x <down>") 'windmove-down-cycle)
 (global-set-key (kbd "C-x <right>") 'windmove-right-cycle)
 (global-set-key (kbd "C-x <left>") 'windmove-left-cycle)
+(global-set-key (kbd "<backtab>") #'(lambda ()
+                                      (interactive)
+                                      (switch-to-buffer (other-buffer (current-buffer) 1))))
+
+(global-set-key (kbd "M-1") 'delete-other-windows)
+(global-set-key (kbd "M-2") 'split-window-below)
+(global-set-key (kbd "M-3") 'split-window-right)
