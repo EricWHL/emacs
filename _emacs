@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;       System config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setenv "HOME" "D:/emacs")
-(setenv "PATH" "D:/emacs")
+(setenv "HOME" "G:/soft/emacs")
+(setenv "PATH" "G:/soft/emacs")
 
 (require 'cc-mode)
 
@@ -250,3 +250,5 @@
 (global-set-key (kbd "M-1") 'delete-other-windows)
 (global-set-key (kbd "M-2") 'split-window-below)
 (global-set-key (kbd "M-3") 'split-window-right)
+
+
