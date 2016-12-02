@@ -1,13 +1,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;       System config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setenv "HOME" "G:/soft/emacs")
-(setenv "PATH" "G:/soft/emacs")
+(setenv "HOME" "D:/emacs")
+(setenv "PATH" "D:/emacs")
 
 (require 'cc-mode)
 
 (setq-default c-basic-offset 4 c-default-style "linux")
-(setq-default tab-width 4 indent-tabs-mode t)
+(setq-default indent-tabs-mode nil)
+(setq default-tab-width 4)
+(set-buffer-file-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
 ;;; Emacs is not a package manager, and here we load its package manager!
@@ -68,10 +72,10 @@
 ;;color theme config
 
 ;;--------------windows config------------------
-(set-foreground-color "grey")
-(set-background-color "black")
-(set-cursor-color "gold1")
-(set-mouse-color "gold1")
+;;(set-foreground-color "grey")
+;;(set-background-color "black")
+;;(set-cursor-color "gold1")
+;;(set-mouse-color "gold1")
 
 ;;设置打开文件的缺省路径
 (setq default-directory "D:/")
@@ -141,11 +145,13 @@
 (set-face-foreground 'secondary-selection "skyblue")
 (set-face-background 'secondary-selection "darkblue")
 
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
-(require 'color-theme)
-(add-to-list 'load-path "D:/emacs/.emacs.d/theme")
-(require 'color-theme-tangotango)
-(color-theme-tangotango)
+;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+;(require 'color-theme)
+;(add-to-list 'load-path "D:/emacs/.emacs.d/theme")
+;(require 'color-theme-tangotango)
+;(color-theme-tangotango)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/dracula-theme-20160826.627")
+(load-theme 'dracula t)
 
 (setq column-number-mode t)
 (setq line-number-mode t)
@@ -209,8 +215,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; golden-ratio config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;(require 'golden-ratio)
-;;(golden-ratio-mode 1)
+;(require 'golden-ratio)
+;(golden-ratio-mode 1)
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
@@ -243,6 +249,47 @@
 (global-set-key (kbd "C-x <down>") 'windmove-down-cycle)
 (global-set-key (kbd "C-x <right>") 'windmove-right-cycle)
 (global-set-key (kbd "C-x <left>") 'windmove-left-cycle)
+
+;;helm
+(add-to-list 'load-path "~/.emacs.d/elpa/helm-20160831.10")
+(require 'helm)
+(require 'helm-config)
+(require 'helm-eshell)
+(require 'helm-files)
+(require 'helm-grep)
+(require 'helm-flymake)
+;(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(when (package-installed-p 'helm)
+  ;; change default prefix key
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
+
+  ;; helm-M-x
+  (setq helm-M-x-fuzzy-match t)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+
+  ;; helm-kill-ring
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+  ;; helm-mini
+  (global-set-key (kbd "C-x b") 'helm-mini)
+  (setq helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t)
+
+  ;; helm-find-files
+                                        ;(global-set-key (kbd "C-x C-f") 'helm-find-files)
+  ;; helm-imenu
+  (global-set-key (kbd "C-x c i") 'helm-imenu)
+  )
+(helm-mode 1)
+
+(when (package-installed-p 'helm-projectile)
+  (projectile-global-mode)
+  (helm-projectile-on)
+  )
+
+
+;;global key config
 (global-set-key (kbd "<backtab>") #'(lambda ()
                                       (interactive)
                                       (switch-to-buffer (other-buffer (current-buffer) 1))))
@@ -252,3 +299,65 @@
 (global-set-key (kbd "M-3") 'split-window-right)
 
 
+
+
+;;window number config
+(add-to-list 'load-path "~/perconfig/")
+(require 'window-number)
+
+(window-number-mode 1)
+
+(autoload 'window-number-mode "window-number"
+   "A global minor mode that enables selection of windows according to
+ numbers with the C-x C-j prefix.  Another mode,
+ `window-number-meta-mode' enables the use of the M- prefix."
+   t)
+
+;; this variables must be set before load helm-gtags
+;; you can change to any prefix key of your choice
+;;(setq helm-gtags-prefix-key &quot;\C-cg&quot;)
+(require 'helm-gtags)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+(custom-set-variables
+ '(helm-gtags-path-style 'relative)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-auto-update t))
+
+(setq helm-gtags-ignore-case t
+		helm-gtags-auto-update t
+		helm-gtags-use-input-at-cursor t
+		helm-gtags-pulse-at-cursor t
+		helm-gtags-prefix-key "\C-cg"
+		helm-gtags-suggested-key-mapping t)
+(defun set-helm-gtags-keybindings ()
+	(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+	(define-key helm-gtags-mode-map (kbd "C-c s") 'helm-gtags-select)
+	(define-key helm-gtags-mode-map (kbd "M-."	 ) 'helm-gtags-dwim)
+	(define-key helm-gtags-mode-map (kbd "M-,"	 ) 'helm-gtags-pop-stack)
+    (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
+    (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
+    (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
+    (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
+    (define-key helm-gtags-mode-map (kbd "C-c ,") 'helm-gtags-previous-history)
+    (define-key helm-gtags-mode-map (kbd "C-c .") 'helm-gtags-next-history)
+    (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))
+
+(add-hook 'helm-gtags-mode-hook 'set-helm-gtags-keybindings)
+  
+;; Enable helm-gtags-mode in Dired so you can jump to any tag
+;; when navigate project tree with Dired
+(add-hook 'dired-mode-hook 'helm-gtags-mode)
+(add-hook 'eshell-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+;;flymake
+(add-to-list 'load-path "~/.emacs.d/elpa/flymake-0.4.16")
+(require 'flymake) 
+(global-set-key [f3] 'flymake-display-err-menu-for-current-line)
+(global-set-key [f4] 'flymake-goto-next-error)
+(setq flymake-mode t)
